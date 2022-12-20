@@ -21,10 +21,10 @@ from sklearn.metrics import classification_report, confusion_matrix
 # from sklearn.model_selection import train_test_split, KFold, cross_val_score
 
 #Data importation 
-data = pd.read_csv("streamlit_app/breast-cancer.csv", on_bad_lines='skip')
-test_data = pd.read_csv('streamlit_app/y_test.csv', on_bad_lines='skip')
+data = pd.read_csv("streamli_app/breast-cancer.csv", on_bad_lines='skip')
+test_data = pd.read_csv('streamli_app/y_test.csv', on_bad_lines='skip')
 
-favicon = Image.open('streamlit_app/bc_fav.png')
+favicon = Image.open('streamli_app/bc_fav.png')
 st.set_page_config(page_title="BC-classifier", page_icon= favicon)
 
 
@@ -115,11 +115,11 @@ def main():
             st.write(dataframe.head(5))
 
             # Loading model to compare the results 
-            tree_model = pickle.load(open('streamlit_app/DecisionTreeClassifier().pkl','rb'))
-            gauss_model = pickle.load(open('streamlit_app/GaussianNB().pkl','rb'))
-            knn_model = pickle.load(open('streamlit_app/KNeighborsClassifier(n_neighbors=3).pkl','rb'))
-            lr_model = pickle.load(open('streamlit_app/lr_model.pkl','rb'))
-            svc_model = pickle.load(open('streamlit_app/svc_fit.pkl','rb'))
+            tree_model = pickle.load(open('streamli_app/DecisionTreeClassifier().pkl','rb'))
+            gauss_model = pickle.load(open('streamli_app/GaussianNB().pkl','rb'))
+            knn_model = pickle.load(open('streamli_app/KNeighborsClassifier(n_neighbors=3).pkl','rb'))
+            lr_model = pickle.load(open('streamli_app/lr_model.pkl','rb'))
+            svc_model = pickle.load(open('streamli_app/svc_fit.pkl','rb'))
             
             options = st.selectbox(
                     'Select a trained model from the list to classify the type of breast cancer.',
