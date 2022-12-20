@@ -1,30 +1,30 @@
 import streamlit as st
 import pickle
-import joblib
+#import joblib
 import pandas as pd
 from PIL import Image
-import seaborn as sns
+#import seaborn as sns
 import plotly.express as px
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
 
-from sklearn.svm import SVC
-from sklearn import decomposition
-from sklearn.naive_bayes import GaussianNB
+# from sklearn.svm import SVC
+# from sklearn import decomposition
+# from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import normalize
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
+# from sklearn.preprocessing import normalize
+# from sklearn.tree import DecisionTreeClassifier
+# from sklearn.model_selection import GridSearchCV 
+# from sklearn.neighbors import KNeighborsClassifier
+# from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import train_test_split, KFold, cross_val_score
+# from sklearn.model_selection import train_test_split, KFold, cross_val_score
 
-#Data importation
-data = pd.read_csv('data/breast-cancer.csv')
-test_data = pd.read_csv('data/y_test.csv')
+#Data importation 
+data = pd.read_csv("streamlit_app/breast-cancer.csv", on_bad_lines='skip')
+test_data = pd.read_csv('streamlit_app/y_test.csv', on_bad_lines='skip')
 
-favicon = Image.open('templates/images/bc_fav.png')
+favicon = Image.open('streamlit_app/bc_fav.png')
 st.set_page_config(page_title="BC-classifier", page_icon= favicon)
 
 
@@ -64,7 +64,7 @@ def main():
                 <li><p align="justify"><b style= 'color: #ED2E38'>Linearity Checker:</b> Using this function of the app, the user can examine the features that are linearly related. The user selects the desired features from a drop-down menu of all the accessible features, and a scatter matrix is then created for visualization.</p>
             </ul>
             """,unsafe_allow_html=True)
-
+           
         elif option == 'Cancer Type Plot':
             st.markdown(f"""<p align="justify">The dataset connected with this app was examined, and two distinct diagnoses of breast cancer were recorded as Benign (B) and Malignant (M). See the table and bar plot below for visualization of the frequency of each cancer type.</p>""", unsafe_allow_html=True)
             st.table(data['diagnosis'].value_counts())
@@ -114,12 +114,12 @@ def main():
             st.markdown(f"The uploaded file has {len(list(dataframe))} columns which are: {list(dataframe.columns)}.")
             st.write(dataframe.head(5))
 
-            # Loading model to compare the results
-            tree_model = pickle.load(open('templates/models/DecisionTreeClassifier().pkl','rb'))
-            gauss_model = pickle.load(open('templates/models/GaussianNB().pkl','rb'))
-            knn_model = pickle.load(open('templates/models/KNeighborsClassifier(n_neighbors=3).pkl','rb'))
-            lr_model = pickle.load(open('templates/models/lr_model.pkl','rb'))
-            svc_model = pickle.load(open('templates/models/svc_fit.pkl','rb'))
+            # Loading model to compare the results 
+            tree_model = pickle.load(open('streamlit_app/DecisionTreeClassifier().pkl','rb'))
+            gauss_model = pickle.load(open('streamlit_app/GaussianNB().pkl','rb'))
+            knn_model = pickle.load(open('streamlit_app/KNeighborsClassifier(n_neighbors=3).pkl','rb'))
+            lr_model = pickle.load(open('streamlit_app/lr_model.pkl','rb'))
+            svc_model = pickle.load(open('streamlit_app/svc_fit.pkl','rb'))
             
             options = st.selectbox(
                     'Select a trained model from the list to classify the type of breast cancer.',
